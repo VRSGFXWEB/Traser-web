@@ -136,49 +136,26 @@
       box-shadow: 0 0 8px #00ccff;
     }
 
-    .ransomware-button {
+    .aimlock-button {
       display: inline-block;
-      background: linear-gradient(135deg, #4a0000, #ff0000);
-      border: 2px solid #ff0000;
-      color: white;
+      background: linear-gradient(135deg, #000000, #550000);
+      border: 1.5px solid #ff0000;
+      color: #ff0000;
       padding: 12px 24px;
       font-size: 14px;
-      margin: 12px auto;
+      margin: 10px auto;
       cursor: pointer;
       border-radius: 12px;
       text-decoration: none;
-      font-weight: 700;
+      font-weight: 600;
       transition: all 0.3s ease;
-      box-shadow: 0 0 10px #ff0000, 0 0 20px #990000;
+      box-shadow: 0 0 5px #ff0000, 0 0 10px #990000;
     }
 
-    .ransomware-button:hover {
+    .aimlock-button:hover {
       transform: scale(1.08);
-      box-shadow: 0 0 15px #ff0000, 0 0 25px #ff0000;
-    }
-
-    .ransomware-info {
-      margin-top: 15px;
-      padding: 12px;
-      background: rgba(0, 0, 0, 0.6);
-      border: 2px dashed #ff0000;
-      color: #fff;
-      border-radius: 10px;
-      max-width: 90%;
-      margin-left: auto;
-      margin-right: auto;
-      display: none;
-    }
-
-    .ransomware-info p {
-      font-size: 14px;
-      line-height: 1.6;
-      color: #ffcccc;
-    }
-
-    .ransomware-info a {
-      color: #00ccff;
-      text-decoration: underline;
+      box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+      background: linear-gradient(135deg, #1a0000, #330000);
     }
   </style>
 </head>
@@ -207,23 +184,9 @@
     <a class="link-button" href="https://open.spotify.com/" target="_blank">SPOTIFY WEB LOGIN</a>
     <a class="link-button pink-button" href="https://vrsgfxweb.github.io/anime-menu/" target="_blank">NONTON ANIME</a>
     <a class="link-button" href="https://chat.whatsapp.com/GX9KIuzSQKN9PNOxq7uKcM" target="_blank">JOIN TRASER X4 V1 GROUP</a>
-    <a class="link-button" href="https://vrsgfxweb.github.io/Panel-vrs/" target="_blank">AIMLOCK BY VRS</a>
-
-    <a class="ransomware-button" href="#" onclick="showRansomwareInfo()">RANSOMWARE NEW BY ANON GANTENG</a>
-
-    <div id="ransomware-info" class="ransomware-info">
-      <p><strong>*RENSOMWARE NEW BY ANON GANTENG*</strong></p>
-      <p>*#KUNCI POP UP*</p>
-      <p>*#PisStorage*</p>
-      <p>*#Zerobrush*</p>
-      <p><code>©Anon404</code></p>
-      <p><strong>*LINK:*</strong><br>
-        <a href="https://www.mediafire.com/file/bidg53oqfii1rc2/NethunterX.apk/file" target="_blank">Download Ransomware - MediaFire</a>
-      </p>
-      <p><strong>*SUMBER ORI*</strong><br>
-        <a href="https://whatsapp.com/channel/0029Vb3Zghs1dAvv9mMkJL2T" target="_blank">WhatsApp Channel Anon Ganteng</a>
-      </p>
-    </div>
+   <a class="link-button pink-button" href="https://vrsgfxweb.github.io/Surat-cinta-by-vrs/" target="_blank">FITUR EKSLUSIF 🥰🗿</a>
+    <!-- AIMLOCK BUTTON -->
+    <a class="aimlock-button" href="https://vrsgfxweb.github.io/Panel-vrs/" target="_blank">AIMLOCK BY VRS</a>
 
     <p class="footer-code">Traser website</p>
     <div class="bergerak">
@@ -231,6 +194,7 @@
     </div>
   </div>
 
+  <!-- Halaman YouTube Downloader -->
   <div id="youtube-page" class="hidden">
     <img src="https://files.catbox.moe/ro9u9z.jpg" alt="TRASER" class="logo">
     <h2 class="highlight">TRASER YOUTUBE DOWNLOADER</h2>
@@ -270,11 +234,246 @@
         alert("Masukkan URL YouTube yang valid!");
       }
     }
+  </script>
 
-    function showRansomwareInfo() {
-      const info = document.getElementById("ransomware-info");
-      info.style.display = info.style.display === "block" ? "none" : "block";
+</body>
+  </html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TRASER OFC</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('https://files.catbox.moe/197nmb.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Courier New', monospace;
+      color: white;
+      text-align: center;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    h1, h2, p {
+      text-shadow: 2px 2px 5px black;
+    }
+
+    h1 {
+      margin-top: 20px;
+      font-size: 30px;
+      font-weight: bold;
+      color: #00ccff;
+    }
+
+    h2.highlight {
+      font-size: 22px;
+      color: #ff0000;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-top: 10px;
+    }
+
+    .logo {
+      width: 180px;
+      border-radius: 50%;
+      margin: 20px auto;
+      border: 2px solid #00ccff;
+      box-shadow: 0 0 8px #00ccff, 0 0 4px #ffffff50;
+    }
+
+    .yellow-text {
+      color: yellow;
+      font-size: 13px;
+      margin: 8px;
+    }
+
+    .green-text {
+      color: lightgreen;
+      font-size: 12px;
+      margin-top: 18px;
+    }
+
+    .button, .link-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #ff0000, #2b0000);
+      border: 1.5px solid #00ccff;
+      color: white;
+      padding: 10px 20px;
+      font-size: 14px;
+      margin: 6px auto;
+      cursor: pointer;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 5px #00ccff, 0 0 12px #ff0000;
+    }
+
+    .button:hover, .link-button:hover {
+      transform: scale(1.07);
+      box-shadow: 0 0 10px #00ccff, 0 0 18px #ff1a1a;
+    }
+
+    .pink-button {
+      background: linear-gradient(135deg, #ff69b4, #ff1493);
+      box-shadow: 0 0 8px #ff69b4, 0 0 12px #ff1493;
+      border: 1.5px solid #fff;
+    }
+
+    .pink-button:hover {
+      transform: scale(1.07);
+      box-shadow: 0 0 12px #ffb6c1, 0 0 20px #ff69b4;
+    }
+
+    .footer-code {
+      margin-top: 20px;
+      font-size: 11px;
+      color: #ccc;
+    }
+
+    .blink {
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .glitch {
+      color: red;
+      font-size: 16px;
+      font-weight: bold;
+      position: relative;
+      animation: glitch 1s infinite;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+    }
+
+    @keyframes glitch {
+      0% { text-shadow: 2px 0 red, -2px 0 blue; }
+      20% { text-shadow: -2px 0 green, 2px 0 red; }
+      40% { text-shadow: 2px 0 yellow, -2px 0 purple; }
+      60% { text-shadow: -2px 0 cyan, 2px 0 orange; }
+      80% { text-shadow: 2px 0 white, -2px 0 black; }
+      100% { text-shadow: none; }
+    }
+
+    input[type="text"] {
+      padding: 8px;
+      width: 80%;
+      max-width: 280px;
+      border-radius: 10px;
+      border: none;
+      background: #111;
+      color: white;
+      text-align: center;
+      box-shadow: 0 0 8px #00ccff;
+    }
+
+    .aimlock-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #000000, #550000);
+      border: 1.5px solid #ff0000;
+      color: #ff0000;
+      padding: 12px 24px;
+      font-size: 14px;
+      margin: 10px auto;
+      cursor: pointer;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 5px #ff0000, 0 0 10px #990000;
+    }
+
+    .aimlock-button:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+      background: linear-gradient(135deg, #1a0000, #330000);
+    }
+  </style>
+</head>
+<body>
+
+  <div id="main-page">
+    <h1>TraserSec Team</h1>
+    <p>Traser official marga x4</p>
+
+    <img src="https://files.catbox.moe/ro9u9z.jpg" alt="TRASER" class="logo">
+
+    <h2 class="highlight">TRASER OFC</h2>
+    <p class="yellow-text blink">Entertainment website</p>
+    <p><strong>TraserSec</strong> Website TRASER</p>
+
+    <marquee>
+      <span class="glitch">Thanks to Yan • Jall • Rapip • Vrs • Daviant • Apiss • Fall • Noxvy • BAPAK AGUS • Celxz</span>
+    </marquee>
+
+    <p class="green-text">Tiktok downloader, Spotify Web, Grup Traser</p>
+
+    <button class="button" onclick="playSound()">PLAY SOUND - ALONE REMIX</button><br>
+
+    <a class="link-button" href="https://vrsgfxweb.github.io/Tt-download-/" target="_blank">TRASER TIKTOK DOWNLOADER</a><br>
+    <a class="link-button" href="#" onclick="showYTPage()">TRASER YOUTUBE DOWNLOADER</a><br>
+    <a class="link-button" href="https://open.spotify.com/" target="_blank">SPOTIFY WEB LOGIN</a>
+    <a class="link-button pink-button" href="https://vrsgfxweb.github.io/anime-menu/" target="_blank">NONTON ANIME</a>
+    <a class="link-button" href="https://chat.whatsapp.com/GX9KIuzSQKN9PNOxq7uKcM" target="_blank">JOIN TRASER X4 V1 GROUP</a>
+   <a class="link-button pink-button" href="https://vrsgfxweb.github.io/Surat-cinta-by-vrs/" target="_blank">FITUR EKSLUSIF 🥰🗿</a>
+    <!-- AIMLOCK BUTTON -->
+    <a class="aimlock-button" href="https://vrsgfxweb.github.io/Panel-vrs/" target="_blank">AIMLOCK BY VRS</a>
+
+    <p class="footer-code">Traser website</p>
+    <div class="bergerak">
+      <p>Copyright © 2025 Traser</p>
+    </div>
+  </div>
+
+  <!-- Halaman YouTube Downloader -->
+  <div id="youtube-page" class="hidden">
+    <img src="https://files.catbox.moe/ro9u9z.jpg" alt="TRASER" class="logo">
+    <h2 class="highlight">TRASER YOUTUBE DOWNLOADER</h2>
+    <p class="yellow-text blink">Download YouTube Video by SaveFrom</p>
+
+    <input type="text" id="youtube-url" placeholder="Paste URL YouTube di sini">
+    <br><br>
+    <button class="button" onclick="goToSaveFrom()">DOWNLOAD</button><br>
+    <a class="link-button" href="#" onclick="goBack()">KEMBALI KE MENU UTAMA</a>
+  </div>
+
+  <audio id="sound">
+    <source src="https://cdn.prinsh.com/data-1/mp3/alan-walker_alone-remix.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    function playSound() {
+      document.getElementById("sound").play();
+    }
+
+    function showYTPage() {
+      document.getElementById("main-page").classList.add("hidden");
+      document.getElementById("youtube-page").classList.remove("hidden");
+    }
+
+    function goBack() {
+      document.getElementById("youtube-page").classList.add("hidden");
+      document.getElementById("main-page").classList.remove("hidden");
+    }
+
+    function goToSaveFrom() {
+      const url = document.getElementById("youtube-url").value;
+      if (url && (url.includes("youtube.com") || url.includes("youtu.be"))) {
+        const link = `https://id.savefrom.net/1-youtube-video-downloader.php?url=${encodeURIComponent(url)}`;
+        window.open(link, "_blank");
+      } else {
+        alert("Masukkan URL YouTube yang valid!");
+      }
     }
   </script>
+
 </body>
-  </html>
+      </html>
