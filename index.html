@@ -1,836 +1,358 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TRASER | Premium Digital Club</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Montserrat:wght@300;400;600&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
-  <style>
-    /* Theme Toggle Button */
-    .theme-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 10000;
-      background: rgba(0,0,0,0.7);
-      border: none;
-      color: white;
-      padding: 10px 15px;
-      border-radius: 30px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 14px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
-      transition: all 0.3s ease;
-    }
-    
-    .theme-toggle:hover {
-      transform: scale(1.05);
-    }
-    
-    .theme-toggle i {
-      font-size: 16px;
-    }
-    
-    /* Shared Styles */
-    .hidden {
-      display: none;
-    }
-    
-    /* PREMIUM THEME */
-    .premium-theme {
-      --gold: #D4AF37;
-      --gold-light: #F5E6B3;
-      --gold-dark: #996515;
-      --black: #111111;
-      --black-light: #1A1A1A;
-      --white: #F5F5F5;
-      --diamond: #E2F1FF;
-      --transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-      
-      margin: 0;
-      padding: 0;
-      background-color: var(--black);
-      color: var(--white);
-      font-family: 'Montserrat', sans-serif;
-      overflow-x: hidden;
-      position: relative;
-    }
-    
-    .premium-theme .luxury-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(ellipse at center, var(--black-light) 0%, var(--black) 100%);
-      z-index: -2;
-    }
-    
-    .premium-theme .diamond-pattern {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: 
-        linear-gradient(45deg, rgba(212, 175, 55, 0.03) 25%, transparent 25%),
-        linear-gradient(-45deg, rgba(212, 175, 55, 0.03) 25%, transparent 25%),
-        linear-gradient(45deg, transparent 75%, rgba(212, 175, 55, 0.03) 75%),
-        linear-gradient(-45deg, transparent 75%, rgba(212, 175, 55, 0.03) 75%);
-      background-size: 40px 40px;
-      z-index: -1;
-      opacity: 0.5;
-    }
-    
-    .premium-theme .luxury-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 40px 20px;
-      position: relative;
-    }
-    
-    .premium-theme .luxury-card {
-      background: rgba(26, 26, 26, 0.8);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-      border-radius: 20px;
-      border: 1px solid rgba(212, 175, 55, 0.2);
-      box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5),
-                  0 0 0 1px rgba(212, 175, 55, 0.1);
-      padding: 50px 40px;
-      margin: 40px 0;
-      position: relative;
-      overflow: hidden;
-      transition: var(--transition);
-    }
-    
-    .premium-theme .luxury-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 60px rgba(0, 0, 0, 0.6),
-                  0 0 0 1px rgba(212, 175, 55, 0.2);
-    }
-    
-    .premium-theme .luxury-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 5px;
-      background: linear-gradient(90deg, var(--gold), var(--gold-dark), var(--gold));
-    }
-    
-    .premium-theme h1, 
-    .premium-theme h2, 
-    .premium-theme h3 {
-      font-family: 'Playfair Display', serif;
-      color: var(--gold-light);
-      text-align: center;
-    }
-    
-    .premium-theme h1 {
-      font-size: 3rem;
-      margin-bottom: 20px;
-      letter-spacing: 1px;
-      position: relative;
-      display: inline-block;
-    }
-    
-    .premium-theme h1::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    }
-    
-    .premium-theme h2 {
-      font-size: 1.8rem;
-      margin: 30px 0 20px;
-    }
-    
-    .premium-theme p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      color: var(--white);
-      margin-bottom: 25px;
-    }
-    
-    .premium-theme .luxury-logo {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      margin: 0 auto 30px;
-      border: 3px solid var(--gold);
-      padding: 5px;
-      box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
-      position: relative;
-      transition: var(--transition);
-    }
-    
-    .premium-theme .luxury-logo:hover {
-      transform: rotate(5deg) scale(1.05);
-      box-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
-    }
-    
-    .premium-theme .luxury-btn {
-      display: inline-block;
-      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-      color: var(--black);
-      padding: 15px 30px;
-      font-size: 1rem;
-      margin: 15px 10px;
-      cursor: pointer;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: var(--transition);
-      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
-      border: none;
-      position: relative;
-      overflow: hidden;
-      text-align: center;
-      min-width: 200px;
-    }
-    
-    .premium-theme .luxury-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
-      color: var(--black);
-    }
-    
-    .premium-theme .luxury-btn-outline {
-      background: transparent;
-      border: 2px solid var(--gold);
-      color: var(--gold-light);
-      box-shadow: none;
-    }
-    
-    .premium-theme .luxury-btn-outline:hover {
-      background: rgba(212, 175, 55, 0.1);
-      color: var(--gold-light);
-    }
-    
-    .premium-theme .luxury-notification {
-      position: fixed;
-      top: 30px;
-      right: -400px;
-      background: rgba(26, 26, 26, 0.95);
-      color: var(--gold-light);
-      border-left: 5px solid var(--gold);
-      padding: 20px 30px;
-      border-radius: 5px;
-      font-size: 1rem;
-      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
-      z-index: 9999;
-      animation: slideIn 0.8s forwards, fadeOut 0.5s 3s forwards;
-      font-weight: 500;
-      max-width: 350px;
-    }
-    
-    .premium-theme .luxury-marquee {
-      background: rgba(17, 17, 17, 0.7);
-      padding: 15px 0;
-      margin: 30px 0;
-      border-top: 1px solid rgba(212, 175, 55, 0.2);
-      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-      overflow: hidden;
-    }
-    
-    .premium-theme .luxury-marquee-content {
-      font-size: 1rem;
-      color: var(--gold-light);
-      white-space: nowrap;
-      animation: marquee 20s linear infinite;
-      display: inline-block;
-      padding-left: 100%;
-    }
-    
-    .premium-theme .luxury-input {
-      padding: 15px 20px;
-      width: 70%;
-      max-width: 500px;
-      border-radius: 50px;
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      background: rgba(17, 17, 17, 0.7);
-      color: var(--gold-light);
-      font-size: 1rem;
-      margin: 20px auto;
-      display: block;
-      transition: var(--transition);
-      text-align: center;
-      font-family: 'Montserrat', sans-serif;
-    }
-    
-    .premium-theme .luxury-input:focus {
-      outline: none;
-      border-color: var(--gold);
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
-    }
-    
-    .premium-theme .diamond {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      background: var(--diamond);
-      transform: rotate(45deg);
-      opacity: 0;
-      animation: diamondFall linear infinite;
-    }
-    
-    .premium-theme .luxury-footer {
-      text-align: center;
-      margin-top: 50px;
-      padding: 30px 0;
-      border-top: 1px solid rgba(212, 175, 55, 0.1);
-      position: relative;
-    }
-    
-    .premium-theme .luxury-footer p {
-      font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.5);
-      margin-bottom: 0;
-    }
-    
-    /* KECE THEME */
-    .kece-theme {
-      margin: 0;
-      padding: 0;
-      background: url('https://files.catbox.moe/197nmb.jpg') no-repeat center center fixed;
-      background-size: cover;
-      font-family: 'Orbitron', monospace;
-      color: #00ffff;
-      text-align: center;
-    }
-    
-    .kece-theme .notification {
-      position: fixed;
-      top: 20px;
-      right: -400px;
-      background: rgba(0, 0, 0, 0.85);
-      color: #00ffea;
-      border: 2px solid #00ffff;
-      padding: 15px 25px;
-      border-radius: 15px;
-      font-size: 14px;
-      box-shadow: 0 0 15px #00ffff, 0 0 8px #ff00ff;
-      z-index: 9999;
-      animation: slideIn 0.8s forwards, fadeOut 0.5s 2.5s forwards;
-    }
-    
-    .kece-theme h1, 
-    .kece-theme h2, 
-    .kece-theme p {
-      text-shadow: 0 0 6px #00ffff, 0 0 10px #ff00ff;
-    }
-    
-    .kece-theme h1 {
-      margin-top: 16px;
-      font-size: 22px;
-      color: #00ffff;
-    }
-    
-    .kece-theme h2.highlight {
-      font-size: 14px;
-      color: #ff0080;
-      margin-top: 6px;
-      text-transform: uppercase;
-    }
-    
-    .kece-theme .logo {
-      width: 100px;
-      border-radius: 50%;
-      margin: 12px auto;
-      border: 1.5px solid #00ffff;
-      box-shadow: 0 0 8px #00ffff, 0 0 4px #ff00ff;
-    }
-    
-    .kece-theme .yellow-text {
-      color: #ffff00;
-      font-size: 9px;
-      margin: 4px;
-    }
-    
-    .kece-theme .green-text {
-      color: #66ff66;
-      font-size: 9px;
-      margin-top: 10px;
-    }
-    
-    .kece-theme .button,
-    .kece-theme .link-button {
-      display: inline-block;
-      background: rgba(0, 0, 0, 0.6);
-      border: 1px solid #00ffff;
-      color: #00ffff;
-      padding: 5px 10px;
-      font-size: 10px;
-      margin: 3px auto;
-      cursor: pointer;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 3px #00ffff, 0 0 6px #ff00ff;
-    }
-    
-    .kece-theme .button:hover,
-    .kece-theme .link-button:hover {
-      transform: scale(1.05);
-      background: #00000099;
-      box-shadow: 0 0 6px #00ffff, 0 0 10px #ff00ff;
-    }
-    
-    .kece-theme .pink-button {
-      background: linear-gradient(135deg, #ff00aa, #ff1493);
-      color: white;
-      border: 1px solid #ffffff;
-      box-shadow: 0 0 4px #ff66cc, 0 0 6px #ff1493;
-    }
-    
-    .kece-theme .pink-button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 8px #ff99cc, 0 0 10px #ff33aa;
-    }
-    
-    .kece-theme .footer-code {
-      margin-top: 16px;
-      font-size: 9px;
-      color: #ccc;
-    }
-    
-    .kece-theme .blink {
-      animation: blink 1s infinite;
-    }
-    
-    .kece-theme .glitch {
-      color: #ff0000;
-      font-size: 10px;
-      font-weight: bold;
-      position: relative;
-      animation: glitch 1s infinite;
-    }
-    
-    .kece-theme input[type="text"] {
-      padding: 4px;
-      width: 70%;
-      max-width: 200px;
-      border-radius: 6px;
-      border: none;
-      background: #000;
-      color: #0ff;
-      text-align: center;
-      box-shadow: 0 0 6px #00ffff;
-      font-family: 'Orbitron', monospace;
-      font-size: 10px;
-    }
-    
-    .kece-theme .aimlock-button {
-      display: inline-block;
-      background: rgba(20,0,0,0.8);
-      border: 1px solid red;
-      color: #ff4444;
-      padding: 5px 10px;
-      font-size: 10px;
-      border-radius: 8px;
-      text-decoration: none;
-      box-shadow: 0 0 4px red, 0 0 8px darkred;
-      margin-top: 6px;
-    }
-    
-    .kece-theme .aimlock-button:hover {
-      transform: scale(1.06);
-      background: rgba(50,0,0,0.9);
-      box-shadow: 0 0 8px red, 0 0 14px #aa0000;
-    }
-    
-    /* Animations */
-    @keyframes slideIn {
-      to { right: 20px; }
-    }
-    
-    @keyframes fadeOut {
-      to { opacity: 0; transform: translateX(50px); }
-    }
-    
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
-    }
-    
-    @keyframes glitch {
-      0% { text-shadow: 2px 0 #0ff, -2px 0 #f0f; }
-      25% { text-shadow: -2px 0 #0f0, 2px 0 #f00; }
-      50% { text-shadow: 2px 0 #ff0, -2px 0 #0ff; }
-      75% { text-shadow: -2px 0 #fff, 2px 0 #f0f; }
-      100% { text-shadow: none; }
-    }
-    
-    @keyframes marquee {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-100%); }
-    }
-    
-    @keyframes diamondFall {
-      0% { top: -10px; opacity: 0; }
-      10% { opacity: 0.8; }
-      90% { opacity: 0.8; }
-      100% { top: 100vh; opacity: 0; }
-    }
-    
-    /* Responsive */
-    @media (max-width: 768px) {
-      .premium-theme .luxury-container {
-        padding: 20px 15px;
-      }
-      
-      .premium-theme .luxury-card {
-        padding: 30px 20px;
-      }
-      
-      .premium-theme h1 {
-        font-size: 2rem;
-      }
-      
-      .premium-theme h2 {
-        font-size: 1.5rem;
-      }
-      
-      .premium-theme .luxury-btn {
-        min-width: 160px;
-        padding: 12px 20px;
-        font-size: 0.9rem;
-      }
-      
-      .premium-theme .luxury-input {
-        width: 85%;
-        padding: 12px 15px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOWNLOAD TRASER APP - BY VRS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --primary: #00ffcc;
+            --secondary: #0099ff;
+            --dark: #0a0a0a;
+            --darker: #050505;
+            --danger: #ff5555;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(0, 255, 204, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(0, 153, 255, 0.1) 0%, transparent 50%);
+            background-attachment: fixed;
+        }
+        
+        .container {
+            background: linear-gradient(145deg, var(--darker), #111);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            padding: 30px;
+            max-width: 600px;
+            width: 90%;
+            margin: 50px auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                transparent 0%,
+                transparent 50%,
+                rgba(0, 255, 204, 0.05) 50%,
+                rgba(0, 153, 255, 0.05) 100%
+            );
+            transform: rotate(30deg);
+            animation: shine 6s infinite linear;
+            z-index: -1;
+        }
+        
+        @keyframes shine {
+            0% { transform: rotate(30deg) translate(-10%, -10%); }
+            100% { transform: rotate(30deg) translate(10%, 10%); }
+        }
+        
+        h1 {
+            color: var(--primary);
+            margin-top: 0;
+            font-size: 2.2rem;
+            text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            animation: titleUnderline 3s infinite;
+        }
+        
+        @keyframes titleUnderline {
+            0% { transform: scaleX(0); opacity: 0; }
+            50% { transform: scaleX(1); opacity: 1; }
+            100% { transform: scaleX(0); opacity: 0; }
+        }
+        
+        .warning-icon {
+            font-size: 4rem;
+            color: var(--danger);
+            margin: 20px 0;
+            text-shadow: 0 0 15px rgba(255, 85, 85, 0.7);
+            animation: pulse 1.5s infinite alternate;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+        
+        .info-box {
+            background: rgba(20, 20, 20, 0.7);
+            border-left: 4px solid var(--primary);
+            padding: 15px;
+            margin: 25px 0;
+            text-align: left;
+            border-radius: 0 5px 5px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .info-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 204, 0.1), transparent);
+            animation: infoBoxShine 3s infinite;
+        }
+        
+        @keyframes infoBoxShine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .download-btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #000;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 25px 0;
+            font-weight: bold;
+            transition: all 0.4s;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 204, 204, 0.4);
+            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 204, 204, 0.6);
+        }
+        
+        .download-btn:active {
+            transform: translateY(1px);
+        }
+        
+        .download-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                transparent 0%,
+                transparent 45%,
+                rgba(255, 255, 255, 0.3) 50%,
+                transparent 55%,
+                transparent 100%
+            );
+            transform: rotate(30deg);
+            animation: btnShine 3s infinite;
+        }
+        
+        @keyframes btnShine {
+            0% { transform: rotate(30deg) translate(-20%, -20%); }
+            100% { transform: rotate(30deg) translate(20%, 20%); }
+        }
+        
+        .security-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 25px;
+            color: var(--primary);
+            font-size: 0.9rem;
+            background: rgba(0, 255, 204, 0.1);
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid rgba(0, 255, 204, 0.3);
+            animation: fadeIn 2s;
+        }
+        
+        .floating-icons {
+            position: absolute;
+            font-size: 1.5rem;
+            opacity: 0.1;
+            animation: floating 10s infinite linear;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+            100% { transform: translateY(0) rotate(360deg); }
+        }
+        
+        .vrs-brand {
+            margin-top: 30px;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-align: center;
+            animation: fadeIn 3s;
+        }
+        
+        .vrs-brand span {
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Floating particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(0, 255, 204, 0.5);
+            border-radius: 50%;
+            animation: floatParticle linear infinite;
+        }
+        
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(20px);
+                opacity: 0;
+            }
+        }
+    </style>
 </head>
-<body class="premium-theme">
-  <!-- Theme Toggle Button -->
-  <button class="theme-toggle" id="themeToggle">
-    <i class="fas fa-moon"></i>
-    <span>Switch to Kece</span>
-  </button>
-  
-  <!-- PREMIUM GAK TUH -->
-  <div id="premium-content">
-    <!-- backgroundnya -->
-    <div class="luxury-bg"></div>
-    <div class="diamond-pattern"></div>
+<body>
+    <!-- Floating particles -->
+    <div class="particles" id="particles"></div>
     
-    <!-- ANIMASI DIAMOND NYA DEK -->
-    <div id="diamond"></div>
-
-    <!-- Notifikasi nya dek  -->
-    <div id="notification" class="luxury-notification">
-      <i class="fas fa-gem" style="margin-right: 10px;"></i>
-      WELCOME TO TRASER PREMIUM DEK! 
-    </div>
-
-    <!-- Main kontek -->
-    <div class="luxury-container">
-      <div id="main-page">
-        <div class="luxury-card">
-          <div class="luxury-logo">
-            <img src="" alt="">
-          </div>
-          
-          <h1>-TRASER OFFICIAL.</h1>
-          <p style="text-align: center; font-style: italic;">TEMA PREMIUM</p>
-          
-          <div class="luxury-marquee">
-            <div class="luxury-marquee-content">
-              <i class="fas fa-star" style="margin: 0 15px;"></i>
-              Premium YAH DEK • VIP Access 
-              <i class="fas fa-star" style="margin: 0 15px;"></i>
-              Traser Official Marga X4 
-              <i class="fas fa-star" style="margin: 0 15px;"></i>
-              Thanks to Yan • Jall • Rapip • Vrs • Daviant • Apiss • Fall • Noxvy • BAPAK AGUS • Celxz ALL ATMIN
-            </div>
-          </div>
-          
-          <div style="text-align: center; margin: 30px 0;">
-            <button class="luxury-btn" onclick="playSound()">
-              <i class="fas fa-music" style="margin-right: 8px;"></i>
-              PLAY ALONE REMIX🎵
-            </button>
-          </div>
-          
-          <div style="display: flex; flex-wrap: wrap; justify-content: center;">
-            <a href="https://vrsgfxweb.github.io/Tt-download-/" target="_blank" class="luxury-btn luxury-btn-outline">
-              <i class="fas fa-download" style="margin-right: 8px;"></i>
-              TIKTOK DOWNLOADER VIDEO AUDIO
-            </a>
-            
-            <a href="#" onclick="showYTPage()" class="luxury-btn luxury-btn-outline">
-              <i class="fab fa-youtube" style="margin-right: 8px;"></i>
-              YOUTUBE DOWNLOADER VIDEO AUDIO
-            </a>
-            
-            <a href="https://open.spotify.com/" target="_blank" class="luxury-btn luxury-btn-outline">
-              <i class="fab fa-spotify" style="margin-right: 8px;"></i>
-              SPOTIFY WEBSITE
-            </a>
-            
-            <a href="https://vrsgfxweb.github.io/anime-menu/" target="_blank" class="luxury-btn">
-              <i class="fas fa-film" style="margin-right: 8px;"></i>
-              ANIME
-            </a>
-            
-            <a href="https://chat.whatsapp.com/GX9KIuzSQKN9PNOxq7uKcM" target="_blank" class="luxury-btn luxury-btn-outline">
-              <i class="fab fa-whatsapp" style="margin-right: 8px;"></i>
-              JOIND GROUP
-            </a>
-            
-            <a href="https://vrsgfxweb.github.io/Surat-cinta-by-vrs/" target="_blank" class="luxury-btn">
-              <i class="fas fa-heart" style="margin-right: 8px;"></i>
-              FITUR SPESIAL
-            </a>
-            
-            <a href="https://vrsgfxweb.github.io/Panel-vrs/" target="_blank" class="luxury-btn luxury-btn-outline">
-              <i class="fas fa-crosshairs" style="margin-right: 8px;"></i>
-              AIMLOCK EP EP🗿
-            </a>
-            
-            <a href="https://vrsgfxweb.github.io/Tik-tak-enakkkk/" target="_blank" class="luxury-btn luxury-btn-outline">
-              <i class="fas fa-gamepad" style="margin-right: 8px;"></i>
-              TIC-TAC-TOE GAME
-            </a>
-          </div>
+    <!-- Floating icons -->
+    <div class="floating-icons" style="top: 10%; left: 5%;">🔒</div>
+    <div class="floating-icons" style="top: 20%; right: 8%; animation-delay: 1s;">📱</div>
+    <div class="floating-icons" style="bottom: 15%; left: 7%; animation-delay: 2s;">⚠️</div>
+    <div class="floating-icons" style="bottom: 25%; right: 5%; animation-delay: 3s;">🔍</div>
+    
+    <div class="container animate__animated animate__fadeIn">
+        <div class="warning-icon animate__animated animate__pulse animate__infinite">⚠️</div>
+        <h1 class="animate__animated animate__fadeInDown">PERINGATAN!</h1>
+        
+        <div class="info-box animate__animated animate__fadeIn animate__delay-1s">
+            <p>APLIKASI TRASER RESMI BY <strong>VRS</strong>. Pastikan Anda hanya mendownload dari sumber resmi ini. Aplikasi ini <strong>100% AMAN</strong> dan <strong>TANPA PHISING</strong>.</p>
         </div>
-      </div>
-
-      <!-- YouTube Downloader NYA -->
-      <div id="youtube-page" class="hidden">
-        <div class="luxury-card">
-          <div class="luxury-logo">
-            <img src="https://files.catbox.moe/ro9u9z.jpg" alt="TRASER">
-          </div>
-          
-          <h2> YOUTUBE DOWNLOADER</h2>
-          <p style="text-align: center;">High-quality video downloads for member ANJ</p>
-          
-          <input type="text" id="youtube-url" class="luxury-input" placeholder="Enter YouTube URL here...">
-          
-          <div style="text-align: center; margin-top: 30px;">
-            <button class="luxury-btn" onclick="goToSaveFrom()">
-              <i class="fas fa-download" style="margin-right: 8px;"></i>
-              DOWNLOAD NOW
-            </button>
-            
-            <button class="luxury-btn luxury-btn-outline" onclick="goBack()" style="margin-left: 15px;">
-              <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>
-              KEMBALI KE MENU
-            </button>
-          </div>
+        
+        <p class="animate__animated animate__fadeIn animate__delay-1s">Download aplikasi traser resmi di sini:</p>
+        
+        <a href="https://www.mediafire.com/file/chmx8k623po6ngw/Traser+application.apk/file" class="download-btn animate__animated animate__pulse animate__infinite animate__slower">
+            📲 DOWNLOAD APP TRASER TANPA PHISING AMAN 100%
+        </a>
+        
+        <p class="animate__animated animate__fadeIn animate__delay-1s">Link alternatif:<br>
+        <a href="https://www.mediafire.com/file/chmx8k623po6ngw/Traser+application.apk/file" class="animate__animated animate__fadeIn animate__delay-2s" style="color: var(--primary); text-decoration: none; font-weight: bold;">https://www.mediafire.com/file/chmx8k623po6ngw/Traser+application.apk/file/</a></p>
+        
+        <div class="security-badge animate__animated animate__fadeIn animate__delay-2s">
+            <span>🔒</span> 
+            <span style="margin-left: 8px;">APLIKASI AMAN | TERVERIFIKASI | BY VRS</span>
         </div>
-      </div>
-      
-      <div class="luxury-footer">
-        <p>© 2025 TRASER OFC | PREMIUM  </p>
-      </div>
+        
+        <div class="vrs-brand animate__animated animate__fadeIn animate__delay-3s">
+            TRASER APPLICATION | <span>VRSCEECRYPT</span> © 2025
+        </div>
     </div>
-  </div>
-  
-  <!-- KECE THEME CONTENT -->
-  <div id="kece-content" class="hidden">
-    <!-- Notifikasi -->
-    <div id="notification-kece" class="notification">WELCOME TO TRASER APP 🚬😮‍💨</div>
-
-    <!-- UTAMA NYA DEPELOPERR VRS-->
-    <div id="main-page-kece">
-      <h1>TraserSec Team</h1>
-      <p>Traser official marga x4</p>
-      <img src="https://files.catbox.moe/ro9u9z.jpg" alt="TRASER" class="logo">
-      <h2 class="highlight">TRASER OFC</h2>
-      <p class="yellow-text blink">Entertainment website</p>
-      <p><strong>TraserSec</strong> Website TRASER</p>
-
-      <marquee>
-        <span class="glitch">Thanks to Yan • Jall • Rapip • Vrs • Daviant • Apiss • Fall • Noxvy • BAPAK AGUS • Celxz</span>
-      </marquee>
-
-      <p class="green-text">Tiktok downloader, Spotify Web, Grup Traser</p>
-
-      <button class="button" onclick="playSound()">PLAY SOUND - ALONE REMIX</button><br>
-      <a class="link-button" href="https://vrsgfxweb.github.io/Tt-download-/" target="_blank">TRASER TIKTOK DOWNLOADER</a><br>
-      <a class="link-button" href="#" onclick="showYTPageKece()">TRASER YOUTUBE DOWNLOADER</a><br>
-      <a class="link-button" href="https://open.spotify.com/" target="_blank">SPOTIFY WEB LOGIN</a>
-      <a class="link-button pink-button" href="https://vrsgfxweb.github.io/anime-menu/" target="_blank">NONTON ANIME</a>
-      <a class="link-button" href="https://chat.whatsapp.com/GX9KIuzSQKN9PNOxq7uKcM" target="_blank">JOIN TRASER X4 V1 GROUP</a>
-      <a class="link-button pink-button" href="https://vrsgfxweb.github.io/Surat-cinta-by-vrs/" target="_blank">FITUR EKSLUSIF 🥰🗿</a>
-      <a class="aimlock-button" href="https://vrsgfxweb.github.io/Panel-vrs/" target="_blank">AIMLOCK BY VRS</a>
-      <a class="aimlock-button" href="https://vrsgfxweb.github.io/Tik-tak-enakkkk/" target="_blank">TicTackToe game</a>
-        
-      <p class="footer-code">Traser website</p>
-      <div class="bergerak">
-        <p>Copyright © 2025 Traser</p>
-      </div>
-    </div>
-
-    <!-- Halaman YouTube Downloader nya -->
-    <div id="youtube-page-kece" class="hidden">
-      <img src="https://files.catbox.moe/ro9u9z.jpg" alt="TRASER" class="logo">
-      <h2 class="highlight">TRASER YOUTUBE DOWNLOADER</h2>
-      <p class="yellow-text blink">Download YouTube Video by SaveFrom</p>
-
-      <input type="text" id="youtube-url-kece" placeholder="Paste URL YouTube di sini">
-      <br><br>
-      <button class="button" onclick="goToSaveFromKece()">DOWNLOAD</button><br>
-      <a class="link-button" href="#" onclick="goBackKece()">KEMBALI KE MENU UTAMA</a>
-    </div>
-  </div>
-
-  <!-- Audio Elements -->
-  <audio id="notif-sound">
-    <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_f3a08ccddf.mp3" type="audio/mpeg">
-  </audio>
-
-  <audio id="sound">
-    <source src="https://cdn.prinsh.com/data-1/mp3/alan-walker_alone-remix.mp3" type="audio/mpeg">
-  </audio>
-
-  <script>
-    // togel nya
-    const themeToggle = document.getElementById('themeToggle');
-    let currentTheme = 'premium';
     
-    themeToggle.addEventListener('click', () => {
-      if (currentTheme === 'premium') {
-        // pencet tombil tampilan Kece seperti vrs
-        document.body.className = 'kece-theme';
-        document.getElementById('premium-content').classList.add('hidden');
-        document.getElementById('kece-content').classList.remove('hidden');
-        themeToggle.innerHTML = '<i class="fas fa-gem"></i><span>Switch to Premium</span>';
-        currentTheme = 'kece';
+    <script>
+        // Create particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random size between 1px and 3px
+                const size = Math.random() * 2 + 1;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random position
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.bottom = `-10px`;
+                
+                // Random animation duration between 10s and 20s
+                const duration = Math.random() * 10 + 10;
+                particle.style.animationDuration = `${duration}s`;
+                
+                // Random delay
+                particle.style.animationDelay = `${Math.random() * 10}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
         
-        // ini notificasi nya
-        const notifKece = document.getElementById('notification-kece');
-        notifKece.style.display = 'block';
-        notifKece.style.animation = 'slideIn 0.8s forwards, fadeOut 0.5s 2.5s forwards';
+        // Initialize particles when page loads
+        window.addEventListener('load', createParticles);
         
-        setTimeout(() => {
-          notifKece.style.display = 'none';
-        }, 3000);
-      } else {
-        // tombol premium nya muah
-        document.body.className = 'premium-theme';
-        document.getElementById('kece-content').classList.add('hidden');
-        document.getElementById('premium-content').classList.remove('hidden');
-        themeToggle.innerHTML = '<i class="fas fa-moon"></i><span>Switch to Kece</span>';
-        currentTheme = 'premium';
-        
-        // Play notification for Premium theme
-        const notif = document.getElementById('notification');
-        notif.style.display = 'block';
-        notif.style.animation = 'slideIn 0.8s forwards, fadeOut 0.5s 3s forwards';
-        
-        setTimeout(() => {
-          notif.style.display = 'none';
-        }, 3500);
-      }
-      
-      // ini notification nya
-      document.getElementById('notif-sound').play();
-    });
-    
-    // ANIMASI DM FF 
-    function createDiamonds() {
-      const container = document.getElementById('diamonds');
-      const diamondCount = 15;
-      
-      for (let i = 0; i < diamondCount; i++) {
-        const diamond = document.createElement('div');
-        diamond.classList.add('diamond');
-        
-        // Random UKURANN
-        const size = Math.random() * 10 + 5;
-        diamond.style.width = `${size}px`;
-        diamond.style.height = `${size}px`;
-        
-        // Random position
-        diamond.style.left = `${Math.random() * 100}vw`;
-        
-        // Random animation duration between 5s and 15s
-        const duration = Math.random() * 10 + 5;
-        diamond.style.animation = `diamondFall ${duration}s linear infinite`;
-        
-        // BERHENTI
-        diamond.style.animationDelay = `${Math.random() * 5}s`;
-        
-        container.appendChild(diamond);
-      }
-    }
-
-    function playSound() {
-      document.getElementById("sound").play();
-    }
-
-    // Premium  Function nyaa
-    function showYTPage() {
-      document.getElementById("main-page").classList.add("hidden");
-      document.getElementById("youtube-page").classList.remove("hidden");
-    }
-
-    function goBack() {
-      document.getElementById("youtube-page").classList.add("hidden");
-      document.getElementById("main-page").classList.remove("hidden");
-    }
-
-    function goToSaveFrom() {
-      const url = document.getElementById("youtube-url").value;
-      if (url && (url.includes("youtube.com") || url.includes("youtu.be"))) {
-        const link = `https://id.savefrom.net/1-youtube-video-downloader.php?url=${encodeURIComponent(url)}`;
-        window.open(link, "_blank");
-      } else {
-        alert("Please enter a valid YouTube URL!");
-      }
-    }
-    
-    // Kece DONKK
-    function showYTPageKece() {
-      document.getElementById("main-page-kece").classList.add("hidden");
-      document.getElementById("youtube-page-kece").classList.remove("hidden");
-    }
-
-    function goBackKece() {
-      document.getElementById("youtube-page-kece").classList.add("hidden");
-      document.getElementById("main-page-kece").classList.remove("hidden");
-    }
-
-    function goToSaveFromKece() {
-      const url = document.getElementById("youtube-url-kece").value;
-      if (url && (url.includes("youtube.com") || url.includes("youtu.be"))) {
-        const link = `https://id.savefrom.net/1-youtube-video-downloader.php?url=${encodeURIComponent(url)}`;
-        window.open(link, "_blank");
-      } else {
-        alert("Masukkan URL YouTube yang valid!");
-      }
-    }
-
-    // DIAMOND FF
-    window.onload = () => {
-      createDiamonds();
-      
-      const notif = document.getElementById("notification");
-      const sound = document.getElementById("notif-sound");
-      sound.play();
-      
-      setTimeout(() => {
-        notif.style.display = "none";
-      }, 3500);
-    };
-  </script>
+        // Add click animation to button
+        const downloadBtn = document.querySelector('.download-btn');
+        downloadBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Add click animation
+            this.classList.add('animate__animated', 'animate__rubberBand');
+            
+            // Remove animation class after animation completes
+            setTimeout(() => {
+                this.classList.remove('animate__animated', 'animate__rubberBand');
+            }, 1000);
+            
+            // Open link after animation
+            setTimeout(() => {
+                window.location.href = this.href;
+            }, 500);
+        });
+    </script>
 </body>
-  </html>
+</html>
